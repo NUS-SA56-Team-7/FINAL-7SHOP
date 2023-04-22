@@ -107,6 +107,14 @@ namespace ASP.NET_CA_SEVEN_SHOP.Controllers
                 }
                 _db.SaveChanges();
             }
+
+            /** Updates the total cart qty after merging **/
+            var totalQty = 0;
+            foreach (var cartItem in customerCart.CartItem)
+            {
+                totalQty += cartItem.Quantity;
+            }
+            HttpContext.Session.SetInt32("CartItemsCount", totalQty);
         }
     }
 }

@@ -73,6 +73,9 @@ namespace ASP.NET_CA_SEVEN_SHOP.Controllers
             _db.Orders.Add(newOrder);
             _db.SaveChanges();
 
+            /* Resets the cart qty after checkout */
+            session.SetInt32("CartItemsCount", 0);
+
             return RedirectToAction("Index", "Order");
         }
 

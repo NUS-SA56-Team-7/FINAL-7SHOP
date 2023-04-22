@@ -28,17 +28,21 @@
                         <img class="img-fluid rounded-start" src=@orderItem.Product.ProductImageUrl alt=@orderItem.Product.ProductName>
                     </div>
                     <div class="col-md-9 order-2 order-md-2">
-                        <div class="card-body pb-0">
+                        <div class="card-body d-flex flex-column h-100">
                             <p class="card-ttl h4 fw-bolder">@orderItem.Product.ProductName</p>
                             <div class="card-desc">
                                 <p>@orderItem.Product.ProductDescription</p>
                             </div>
+                            <button class="btn btn-primary w-100 mt-auto">
+                                Download
+                                <i class="bi bi-download"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col-4 d-flex flex-column justify-content-between">
-                <div class="d-flex flex-column justify-content-between px-3 py-3 rounded bg-white border h-100 mb-2">
+                <div class="d-flex flex-column justify-content-between px-3 py-3 rounded bg-white border h-100">
                     <div class="qty-tag col-12">
                         <p class="h5 d-inline-block fw-bolder">Purchased on:</p>
                         <span class="h5">@orderItem.CreatedAt.ToString("dd-MM-yyyy")</span>
@@ -53,7 +57,7 @@
                             <span class="h5">@orderItem.Quantity</span>
                         </div>
                     </div>
-                    <div class="rating d-flex justify-content-left">
+                    <div class="rating d-flex justify-content-left align-items-center my-2">
                         <div class="rating" id="@orderItem.OrderId-@orderItem.ProductId">
                             @for (int star = 5; star > 0; star--)
                             {
@@ -61,6 +65,7 @@
                                 <label class="bi-star-fill" for="@orderItem.OrderId-@orderItem.ProductId-@star" onclick="reviewOrder(@orderItem.OrderId, @orderItem.ProductId,@star)"></label>
                             }
                         </div>
+                        <span class="me-1">Your rating: </span>
                     </div>
                     <div class="activation-form">
                         <label for="activation-code-selection">Activation Code:</label>
@@ -95,10 +100,10 @@
                         </select>
                     }*@
                 </div>
-                <button class="btn btn-primary w-100">
+                @*<button class="btn btn-primary w-100">
                     Download
                     <i class="bi bi-download"></i>
-                </button>
+                </button>*@
             </div>
         </div>
     }

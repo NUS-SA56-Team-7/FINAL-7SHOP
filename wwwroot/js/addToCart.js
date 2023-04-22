@@ -10,7 +10,7 @@
 
             let data = JSON.parse(this.responseText);
             if (data.success == true) {
-                document.getElementById("cartQty").innerHTML = data.totalQty;
+                document.getElementById("cartQty").innerHTML = data.totalQty || 0;
             }
         }
     };

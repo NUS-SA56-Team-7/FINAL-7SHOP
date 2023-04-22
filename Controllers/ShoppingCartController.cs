@@ -145,10 +145,18 @@ namespace ASP.NET_CA_SEVEN_SHOP.Controllers
                 }
                 _db.SaveChanges();
 
+                var totalQty = 0;
+                foreach (var cartItem in customerCart.CartItem)
+                {
+                    totalQty += cartItem.Quantity;
+                }
+                session.SetInt32("CartItemsCount", totalQty);
+
                 return Ok(new
                 {
                     success = true,
                     productId = vm.ProductId,
+                    totalQty = totalQty
                 });
             }
         }
@@ -191,6 +199,14 @@ namespace ASP.NET_CA_SEVEN_SHOP.Controllers
                     updatedCartItem.Quantity = vm.Quantity;
                     _db.SaveChanges();
 
+                    var totalQty = 0;
+                    foreach (var cartItem in customerCart.CartItem)
+                    {
+                        totalQty += cartItem.Quantity;
+                    }
+                    session.SetInt32("CartItemsCount", totalQty);
+
+
                     return Ok(new
                     {
                         success = true,
@@ -221,6 +237,7 @@ namespace ASP.NET_CA_SEVEN_SHOP.Controllers
                     cartItems = JsonSerializer.Deserialize<Dictionary<int, int>>(sessCartItems);
                     cartItems.Remove(id);
                     session.SetString("CartItems", JsonSerializer.Serialize(cartItems));
+                    session.SetInt32("CartItemsCount", CartItemsCount(cartItems));
                 }
             }
             /* Removing Products by Logged In User */
@@ -231,6 +248,12 @@ namespace ASP.NET_CA_SEVEN_SHOP.Controllers
                 CartItem removedProduct = customerCart.CartItem.FirstOrDefault(cartItem => cartItem.Product.ProductId == id);
                 customerCart.CartItem.Remove(removedProduct);
                 _db.SaveChanges();
+                var totalQty = 0;
+                foreach (var cartItem in customerCart.CartItem)
+                {
+                    totalQty += cartItem.Quantity;
+                }
+                session.SetInt32("CartItemsCount", totalQty);
             }
 
             return RedirectToAction("Index");
