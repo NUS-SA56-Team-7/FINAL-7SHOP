@@ -138,11 +138,6 @@ namespace ASP.NET_CA_SEVEN_SHOP.Controllers
                     _db.ActivationCodes.Add(new ActivationCode { ActivationCodeId = ac, OrderDetail = orderItem });
                 }
             }
-
-/*            foreach (ActivationCode ac in activationCodes)
-            {
-                _db.ActivationCodes.Add(ac);
-            }*/
         }
 
         private string GenerateActivationCode()

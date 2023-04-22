@@ -140,24 +140,6 @@
         margin-bottom: 94px;
     }
 
-/*.login_form_header::before {
-    display: block;
-    content: '';
-    border: .5px solid #3a302d;
-    position: absolute;
-    width: 35%;
-    top: 50%;
-}
-.login_form_header::after {
-    display: block;
-    content: '';
-    border: .5px solid #3a302d;
-    position: absolute;
-    width: 35%;
-    right: 0;
-    bottom: 50%;
-}*/
-
 .login_form .input-form {
     margin: 0 0 30px;
 }

@@ -83,27 +83,7 @@
                             </select>
                         }
                     </div>
-                @*</div>
-                <div class="activation-form">
-                    <label for="activation-code-selection">Activation Code:</label>
-                    @if (orderItem.Quantity == 1)
-                    {
-                        <p class="form-control">@orderItem.ActivationCodes.ToList()[0].ActivationCodeId</p>
-                    }
-                    else
-                    {
-                        <select class="form-select" aria-label="activation-code-selection">
-                            @foreach(ActivationCode ac in orderItem.ActivationCodes)
-                            {
-                                <option value=@ac.ActivationCodeId>@ac.ActivationCodeId</option>
-                            }
-                        </select>
-                    }*@
                 </div>
-                @*<button class="btn btn-primary w-100">
-                    Download
-                    <i class="bi bi-download"></i>
-                </button>*@
             </div>
         </div>
     }
